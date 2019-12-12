@@ -27,6 +27,12 @@ jobs:
     - name: List artifact APK
       run: ls -la
 
+    - name: Obfuscate APK
+      run: |
+       docker pull claudiugeorgiu/obfuscapk
+       docker tag claudiugeorgiu/obfuscapk obfuscapk
+       docker build -t obfuscapk .
+
     - uses: actions/upload-artifact@v1
       with:
         name: app-debug.apk
