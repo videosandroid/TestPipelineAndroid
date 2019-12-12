@@ -10,11 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
+    - name: CheckOut Code
+      uses: actions/checkout@v1
+      
     - name: set up JDK 1.8
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+        
     - name: Make Gradle executable
       run: chmod +x ./gradlew
       
@@ -29,9 +32,7 @@ jobs:
 
     - name: Obfuscate APK
       run: |
-       docker pull claudiugeorgiu/obfuscapk
-       docker tag claudiugeorgiu/obfuscapk obfuscapk
-       docker build -t obfuscapk .
+        uses: docker://claudiugeorgiu/obfuscapk
 
     - uses: actions/upload-artifact@v1
       with:
