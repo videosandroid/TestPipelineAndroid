@@ -1,0 +1,21 @@
+name: VideoTutorialesPipelineTest
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+      name: Check out project
+    - name: Run a one-line script
+      run: echo VideoTutoriales Android!
+    - name: Run a multi-line script
+      run: |
+        echo VideoTutoriales Android Multiline
+        time
+        touch VideoTutorialesAndroid.txt
+        ls -la
+        
